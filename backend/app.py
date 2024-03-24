@@ -5,7 +5,7 @@ from models import Vendors
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return "Welcome to our API"
 
 @app.route("/vendors", methods=["GET"])
 def load_vendors():
@@ -58,12 +58,6 @@ def delete_vendor(user_id):
 
     return jsonify({"Message" : "Vendor Deleted!"}), 200
 
-@app.route("/contact")
-def contact_team():
-    return render_template('contact.html')
-# @app.route("/api/vendors_list")
-# def list_vendors():
-#     return jsonify("Hello World!")
 
 
 if __name__=="__main__":

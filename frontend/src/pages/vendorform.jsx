@@ -34,7 +34,7 @@ const VendorForm = ({}) => {
         <form onSubmit={onSubmit}>
             <div>
                 <br />
-                <label htmlFor="name">Name :</label>
+                <label htmlFor="name">Name:</label>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div>

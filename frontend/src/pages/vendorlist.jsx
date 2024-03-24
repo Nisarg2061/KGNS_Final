@@ -2,9 +2,9 @@ import React from "react"
 
 const VendorList = ({vendor}) => {
     return <div>
-        <h2>
+        <h1 className="list_h">
             Vendor List
-        </h2>
+        </h1>
         <table className="table_ven">
             <thead>
             <tr>

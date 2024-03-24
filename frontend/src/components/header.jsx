@@ -21,6 +21,7 @@ export default function Header() {
                 Team
                 </a>
             </p>
+            <hr />
         </div>
     )
 }

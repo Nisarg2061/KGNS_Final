@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify, request
+from flask import render_template, jsonify, request
+from flask import Flask
 from config import app, db
 from models import Vendors
 
@@ -9,10 +10,10 @@ def home():
 @app.route("/vendors", methods=["GET"])
 def load_vendors():
     vendor = Vendors.query.all()
-    json_vendors = list(map(lambda x: x.to_josn(), vendor))
+    json_vendors = list(map(lambda x: x.to_json(), vendor))
     return jsonify({"vendor" : json_vendors})
 
-@app.route("/vendors_add", methods=["POST"])
+@app.route("/vendors/add", methods=["POST"])
 def add_vendor():
     Name = request.json.get("name")
     Email = request.json.get("email")

@@ -1,4 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './pages/home';
+import team from './pages/team';
+import vendor from './pages/vendors';
+import add_vendor from './pages/add_vendor';
 import './App.css'
 import VendorList from './vendorlist'
 import VendorForm from './vendorform'
@@ -18,10 +23,15 @@ function App() {
     console.log(data.vendor)
   }
 
-  return <>
-    <VendorList vendor={vendor}/>
-    <VendorForm/>
-  </>
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App

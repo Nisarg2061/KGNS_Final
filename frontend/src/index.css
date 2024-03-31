@@ -1,5 +1,6 @@
 *{
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
 }
 hr{
   margin: 2% 3%;
@@ -10,6 +11,7 @@ hr{
 }
 body{
   background-color: #1B1B1B;  
+  background-image: url(/frontend/public/background.jpg);
 }
 header{
   margin: 0% 1% 0% 0%;
@@ -37,6 +39,7 @@ footer{
   background-color: lightblue;
   margin: 10px;
   padding: 2%;
+  box-shadow: 0px 0px 10px 0px lightblue;
 }
 .index_div_conc{
   height: auto;
@@ -46,6 +49,7 @@ footer{
   background-color: lightblue;
   margin: 10px;
   padding: 1%;
+  box-shadow: 0px 0px 10px 0px lightblue;
 }
 .index_main{
   margin-top: 2em;
@@ -216,4 +220,12 @@ th, td {
   display: table;
   color: white;
   text-align: left;
+}
+.footer_div{
+  text-align: center;
+  color: white;
+}
+.back{
+  background-image: url(/frontend/src/background.jpg);
+  border: 1em solid black;
 }

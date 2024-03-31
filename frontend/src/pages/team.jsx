@@ -5,6 +5,7 @@ export default function Team() {
     return (
         <>
             <Header/>
+            <body className="t_error">
             <div className="row">
         <div className="column">
           <div className="card">
@@ -50,6 +51,8 @@ export default function Team() {
           </div>
         </div>
       </div>
+            </body>
+            
             <Footer/>
         </>
     )

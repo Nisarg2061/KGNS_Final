@@ -5,19 +5,19 @@ import BillForm from "./billform";
 import { useEffect, useState } from "react";
 
 export default function Mater(){
-    const [maters, setMaters] = useState([{}])
+    const [bills, setBills] = useState([{}])
     const [isModalOpen, setIsModalOpen] = useState(false)
 
 
   useEffect(() => {
-    fetchMaters()
+    fetchBills()
   }, []);
 
-  const fetchMaters = async () => {
+  const fetchBills = async () => {
     const response = await fetch("http://127.0.0.1:5000/bills")
     const data = await response.json()
-    setMaters(data.maters)
-    console.log(data.maters)
+    setBills(data.bills)
+    console.log(data.bills)
   }
   const closeModal = () => {
     setIsModalOpen(false)
@@ -30,7 +30,7 @@ export default function Mater(){
     return (
         <>
             <Header/>
-            <BillItem maters={maters}/>
+            <BillItem bills={bills}/>
             <br />
             <button onClick={openCreateModal}>Add Item</button>
             { isModalOpen && <div className="modal">

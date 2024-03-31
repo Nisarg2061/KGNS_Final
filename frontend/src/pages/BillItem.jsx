@@ -1,6 +1,6 @@
 import React from "react";
 
-const BillItem = ({maters}) => {
+const BillItem = ({bills}) => {
 
     return <div>
     <div className="bill_div">
@@ -48,16 +48,16 @@ const BillItem = ({maters}) => {
         </tr>
         </thead>
         <tbody>
-            {maters.map((mater) => (
-                <tr key={mater.id}>
-                    <td>{mater.id}</td>
-                    <td>{mater.description}</td>
-                    <td>{mater.hsn_sac}</td>
-                    <td>{mater.gst_rate}</td>
-                    <td>{mater.quantity}</td>
-                    <td>{mater.rate}</td>
-                    <td>{mater.unit}</td>
-                    <td>{mater.amount}</td>
+            {bills.map((bills) => (
+                <tr key={bills.id}>
+                    <td>{bills.id}</td>
+                    <td>{bills.description}</td>
+                    <td>{bills.hsn_sac}</td>
+                    <td>{bills.gst_rate}</td>
+                    <td>{bills.quantity}</td>
+                    <td>{bills.rate}</td>
+                    <td>{bills.unit}</td>
+                    <td>{bills.amount}</td>
                 </tr>
             ))}
         </tbody>

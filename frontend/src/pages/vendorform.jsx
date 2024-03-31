@@ -1,18 +1,22 @@
 import { useState } from "react";
 
-const VendorForm = ({}) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+const VendorForm = ({ existingVendor = {}, updateCallback}) => {
+    const [name, setName] = useState(existingVendor.name || "");
+    const [email, setEmail] = useState(existingVendor.email || "");
+    const [mobile, setMobile] = useState(existingVendor.mobile || "");
+
+    const updating = Object.entries(existingVendor).length !== 0
 
     const onSubmit = async (e) => {
         e.preventDefault()
 
         const data = {
             name,
-            email
+            email,
+            mobile
         }
 
-        const url = "http://127.0.0.1:5000/vendors/add"
+        const url = "http://127.0.0.1:5000/vendors/" + (updating ? `edit/${existingVendor.id}` : "add")
         const options = {
             method: "POST",
             headers: {
@@ -26,7 +30,7 @@ const VendorForm = ({}) => {
             alert(data.message)
         }
         else{
-
+            updateCallback()
         }
     }
     
@@ -34,13 +38,18 @@ const VendorForm = ({}) => {
         <form onSubmit={onSubmit}>
             <div>
                 <br />
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Name: </label>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
                 <br />
                 <label htmlFor="email">Email:</label>
                 <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div>
+                <br />
+                <label htmlFor="mobile">Mobile:</label>
+                <input type="text" id="mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
             </div>
             <br />
             <button type="submit">Edit Info</button>

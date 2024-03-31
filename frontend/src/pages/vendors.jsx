@@ -8,6 +8,7 @@ import VendorForm from './vendorform';
 export default function Vendors() {
     const [vendor, setVendor] = useState([{}])
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [currentVendor, setCurrentVendor] = useState({})
 
 
   useEffect(() => {
@@ -22,22 +23,33 @@ export default function Vendors() {
   }
   const closeModal = () => {
     setIsModalOpen(false)
+    setCurrentVendor({})
   }
 
   const openCreateModal = () => {
     if (!isModalOpen) setIsModalOpen(true)
   }
 
+  const openEditModal = (vendor) => {
+    if (isModalOpen) return
+    setCurrentVendor(vendor)
+    setIsModalOpen(true)
+  }
+  const onUpdate = () => {
+    closeModal()
+    fetchVendor()
+  }
+
     return (
         <>
             <Header/>
-            <VendorList vendor={vendor}/>
+            <VendorList vendor={vendor} updateVendor={openEditModal} updateCallback={onUpdate}/>
             <br />
             <button onClick={openCreateModal}>Add New Vendor</button>
             { isModalOpen && <div className="modal">
                 <div className="modal_content">
                   <span className="close" onClick={closeModal}>&times;</span>
-                <VendorForm/>
+                <VendorForm existingVendor={currentVendor} updateCallback={onUpdate}/>
                 </div>
               </div>
               }

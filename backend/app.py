@@ -17,13 +17,14 @@ def load_vendors():
 def add_vendor():
     Name = request.json.get("name")
     Email = request.json.get("email")
+    Mobile = request.json.get("mobile")
     if not Name or not Email:
         return (
             jsonify({"message":"You must enter both"}),
             400,
             )
     
-    new_vendor = Vendors(name=Name, email=Email)
+    new_vendor = Vendors(name=Name, email=Email, mobile=Mobile)
     try:
         db.session.add(new_vendor)
         db.session.commit()
@@ -42,6 +43,7 @@ def edit_vendor(user_id):
     data = request.json
     vendor.Name = data.get("name", vendor.Name)
     vendor.Email = data.get("email", vendor.Email)
+    vendor.Mobile = data.get("mobile", vendor.Mobile)
 
     db.session.commit()
     return jsonify({"Message" : "Vendor details updated!"}), 200

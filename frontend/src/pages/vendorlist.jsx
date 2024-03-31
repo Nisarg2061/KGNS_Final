@@ -1,6 +1,6 @@
 import React from "react"
 
-const VendorList = ({vendor}) => {
+const VendorList = ({vendor, updateVendor, updateCallback}) => {
     return <div>
         <h1 className="list_h">
             Vendor List
@@ -11,6 +11,7 @@ const VendorList = ({vendor}) => {
                 <th>Sr No.</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Contact</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -20,8 +21,9 @@ const VendorList = ({vendor}) => {
                         <td>{vendor.id}</td>
                         <td>{vendor.name}</td>
                         <td>{vendor.email}</td>
+                        <td>{vendor.mobile}</td>
                         <td>
-                            <button>Edit</button>
+                            <button onClick={() => updateVendor(vendor)}>Edit</button>
                             <button>Delete</button>
                         </td>
                     </tr>

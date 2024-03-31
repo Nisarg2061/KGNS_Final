@@ -1,5 +1,4 @@
 *{
-  text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
 hr{
@@ -196,4 +195,28 @@ border: 1px solid white;
 }
 input, button, label{
   margin-top: 1em;
+}
+.bill_div{
+  color: white;
+}
+.table_bill{
+  margin: 0%;
+  font-size: 1em;
+  color: white;
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.bill_div_1{
+  display: table;
+  color: white;
+  text-align: left;
+}
+.footer_div{
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 from flask import render_template, jsonify, request
 from flask import Flask
 from config import app, db
-from models import Vendors
+from models import Vendors,Bill
 
 @app.route("/")
 def home():
@@ -60,6 +60,38 @@ def delete_vendor(user_id):
 
     return jsonify({"Message" : "Vendor Deleted!"}), 200
 
+@app.route("/bills", methods=["GET"])
+def load_bills():
+    bills = Bill.query.all()
+    json_bills = [bill.to_json() for bill in bills]
+    return jsonify({"bills": json_bills})
+
+@app.route("/bills/add", methods=["POST"])
+def add_bill():
+    data = request.json
+    description = data.get("description")
+    hsn_sac = data.get("hsn_sac")
+    gst_rate = data.get("gst_rate")
+    quantity = data.get("quantity")
+    rate = data.get("rate")
+    unit = data.get("unit")
+    
+    # if not all([description, hsn_sac, gst_rate, quantity, rate, unit]):
+    #     return jsonify({"message": "All fields are required"}), 400
+    
+    new_bill = Bill(
+        description=description,
+        hsn_sac=hsn_sac,
+        gst_rate=gst_rate,
+        quantity=quantity,
+        rate=rate,
+        unit=unit
+    )
+    
+    db.session.add(new_bill)
+    db.session.commit()
+    
+    return jsonify({"message": "New bill added!"}), 201
 
 
 if __name__=="__main__":

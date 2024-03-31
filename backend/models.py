@@ -13,3 +13,27 @@ class Vendors(db.Model):
             "email": self.email,
             "mobile": self.mobile
         }
+
+class Bill(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(255))
+    hsn_sac = db.Column(db.Integer)
+    gst_rate = db.Column(db.String(10))
+    quantity = db.Column(db.Float)
+    rate = db.Column(db.Float)
+    unit = db.Column(db.String(50))
+
+    def to_json(self):
+        return {
+            "Description of Goods": self.description,
+            "HSN/SAC": self.hsn_sac,
+            "GST Rate": self.gst_rate,
+            "Quantiry (KG)": self.quantity,
+            "Rate": self.rate,
+            "Unit": self.unit,
+            "Amount": self.amount
+        }
+
+    @property
+    def amount(self):
+        return self.quantity * self.rate
